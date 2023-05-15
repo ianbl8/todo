@@ -22,7 +22,7 @@
         <div class="field-body">
           <div class="field">
             <p class="control">
-              <input class="input" type="text" placeholder="Type something...">
+              <input id="todo-id" class="input" type="text" placeholder="Type something...">
             </p>
           </div>
           <button onClick="addTodo()" class="button">Add Todo</button>
@@ -30,6 +30,14 @@
       </div>
     </div>
     <div class="section box">
+      <table id="todo-table" class="table is-fullwidth">
+        <thead>
+          <th>Task</th>
+        </thead>
+        <tbody>
+          <tr></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </html>
