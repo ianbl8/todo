@@ -14,6 +14,21 @@ function renderTodo(todo) {
   textCell.innerText = todo.text;
   const dateCell = row.insertCell(1);
   dateCell.innerText = todo.date;
+  const deleteCell = row.insertCell(2);
+  deleteCell.innerHTML = `<a onclick="deleteTodo('${todo.id}')" class="uk-button uk-button-default">delete</a>`;
+};
+
+function renderAllTodos() {
+  for (let i = 0; i < todoItems.length; i++) {
+    renderTodo(todoItems[i]);
+  };
+};
+
+function clearAllTodos() {
+  let table = document.getElementById("todo-table");
+  for (let i = 0; i < todoItems.length; i++) {
+    table.deleteRow(-1);
+  };
 };
 
 function addTodo() {
@@ -25,4 +40,14 @@ function addTodo() {
   };
   todoItems.push(todo);
   renderTodo(todo);
+  console.log(`Add item: ${todo.id}`);
 };
+
+function deleteTodo(id) {
+  clearAllTodos();
+  const found = todoItems.findIndex((todo) => todo.id == id);
+  todoItems.splice(found, 1);
+  renderAllTodos();
+  console.log(`Delete item: ${id}`);
+};
+
